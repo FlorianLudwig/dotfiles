@@ -1,5 +1,7 @@
 # .bashrc
 
+PATH="$HOME/.local/bin:$PATH"
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
@@ -10,8 +12,8 @@ fi
 
 # User specific aliases and functions
 alias "o=xdg-open"
-alias "atom=flatpak run io.atom.Atom/x86_64/stable"
-alias "code=flatpak run com.visualstudio.code/x86_64/stable"
+alias "atom=flatpak run --filesystem=$SSH_AUTH_SOCK io.atom.Atom/x86_64/stable"
+alias "code=flatpak run --filesystem=$SSH_AUTH_SOCK com.visualstudio.code/x86_64/stable"
 
 WORKON_HOME=~/ve
 
