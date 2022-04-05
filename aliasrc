@@ -1,0 +1,50 @@
+alias pdr='podman run --security-opt label=disable -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK -v /run/user/$UID:/run/user/$UID'
+alias pds='pdr -ti -v /home:/home  -e HOME=$HOME -w $(pwd)'
+
+## GUI integrations
+###################
+# o = open 
+alias o='xdg-open'
+
+# c = copy and v = paste
+#   Requires: dnf install wl-clipboard
+#   Example: 
+#     * Copy list of files in current dirctory to clipboard
+#       ls | c
+#     * change directory into path in clipboard
+#       cd `v`
+#       or shorthand:
+#       cdv
+alias c='wl-copy'
+alias v='wl-paste'
+alias cdv='cd $(v)'
+
+
+alias ll="lsd -l"
+
+# 
+alias h='history|fzf'
+
+
+
+## Navigation
+#############
+
+# j = autojump
+
+
+# d = go to (sub)directory
+# Does not cross filesystem boundaries
+function d {
+	_TMP_FZF_DEFAULT_COMMAND=$FZF_DEFAULT_COMMAND
+	FZF_DEFAULT_COMMAND='fd --type d --one-file-system'
+	cd `fzf`
+	FZF_DEFAULT_COMMAND=$_TMP_FZF_DEFAULT_COMMAND
+}
+
+
+# diff to fzf defaults:
+#  * do not follow symlinks
+#  * don't corss filesystems boundaries, having remote directories etc. leads to issues
+#  * ensure we are only search relevant directories by using fd
+export FZF_DEFAULT_COMMAND='fd --type f --one-file-system'
