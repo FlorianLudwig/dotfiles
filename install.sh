@@ -7,7 +7,7 @@
 #  https://github.com/bugaevc/wl-clipboard
 # lsd
 #  https://github.com/Peltoche/lsd
-sudo dnf install -y autojump autojump-zsh wl-clipboard lsd
+sudo dnf install -y autojump autojump-zsh wl-clipboard lsd fzf
 
 
 

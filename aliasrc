@@ -50,3 +50,9 @@ function d {
 #  * don't corss filesystems boundaries, having remote directories etc. leads to issues
 #  * ensure we are only search relevant directories by using fd
 export FZF_DEFAULT_COMMAND='fd --type f --one-file-system'
+
+
+# Search
+
+alias rgpy='rg -g "*.py"'
+alias rgtf='rg -g "*.tf"'
